@@ -2,7 +2,7 @@ defmodule Server do
     def start_link do
         {:ok, listen_socket} = :gen_tcp.listen(6666,[:binary,
                                                     {:ip, {0,0,0,0}},
-                                                    {:packet, :line},
+                                                    {:packet, 0},
                                                     {:active, false},
                                                     {:reuseaddr, true}])
         loop_acceptor(listen_socket)
