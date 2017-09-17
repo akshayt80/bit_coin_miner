@@ -21,7 +21,8 @@ defmodule BitCoin do
     end
 
     defp generate_string(length \\ 23) do
-        "22163183;" <> :crypto.strong_rand_bytes(length) |> Base.encode64 |> binary_part(0, length)
+        random_string = :crypto.strong_rand_bytes(length) |> Base.encode64 |> binary_part(0, length)
+        "22163183;" <> random_string
     end
 
     defp generate_hash(random_str) do
