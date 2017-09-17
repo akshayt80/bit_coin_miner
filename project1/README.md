@@ -19,10 +19,18 @@ Group members:
 
 # Implementation Details
 
-- #Work Unit :
+- Work Unit :
 For generating the strings, we have used the random string function with a length of 64 bytes. We used the 64 byte because it will give us a higher probability of getting the bitcoins. In our actor worker model, we have designed the system in such a way that for each iteration the workers are assigned a specific task from the actor and this process continues as the workers start to complete their assigned tasks and it goes on untill the required number of bitcoins are generated.
-		
-		We decided on a work unit of 10 million alphanumeric values because we wanted each worker to take approximately five to ten minutes to complete each work unit. We decided on a time interval of five-ten minutes because we wanted to reduce the number of message exchanges between the master and workers. 
+
+- The test result for K=4 :
+
+- Result for K = 5 :
+
+Ratio of CPU time to Real time in this case is = (user + sys) / real = 
+
+- From our distributed bitcoin miner system, we were able to mine a bitcoin with leading zero's counting to 7. i.e. for k = 7 we were able to mine a bitcoin.
+
+- We were able to run our code with 4 machines each having four cores and getting the CPU utilization of atleast 350%.
 
 # Installation
 
