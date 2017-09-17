@@ -1,15 +1,4 @@
 defmodule BitCoin do
-    def start_mining(map, parent, k \\ 3) do
-        #parent = self()
-        # Spawns the function which mines the bit coin
-        spawn fn -> mine(k, parent) end
-        # receiving message from child
-        map = receive do
-            {:good_coin, coin_details} -> coin = String.split(coin_details)
-                check_coin_validity(Enum.at(coin, 0), Enum.at(coin, 1), map)
-        end
-        start_mining(map, k)
-    end
     def mine(k, parent) do
         prefix = String.duplicate("0", k)
         random_string = generate_string()
