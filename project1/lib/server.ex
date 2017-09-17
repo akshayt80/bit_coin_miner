@@ -23,6 +23,7 @@ defmodule Server do
     end
     defp serve(worker, parent) do
         {:ok, data} = :gen_tcp.recv(worker, 0)
+        # send message to main process about the coin found
         send(parent, {:good_coin, data})
         serve(worker, parent)
     end
