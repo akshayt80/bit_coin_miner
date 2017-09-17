@@ -15,7 +15,7 @@ defmodule BitCoin do
         if Map.has_key?(map, coin_str) do
             map
         else
-            IO.puts "#{coin_str} #{coin_hash}"
+            IO.puts "#{coin_str}\t#{coin_hash}"
             Map.put(map, coin_str, coin_hash)
         end
     end
