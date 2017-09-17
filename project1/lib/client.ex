@@ -1,15 +1,23 @@
 defmodule Client do
-    def start_link(server_ip \\ {127,0,0,1}) do
-        {:ok, socket} = :gen_tcp.connect(server_ip, 6666, [:binary, {:active, false},{:packet, 0}])
-        loop(socket)
+    def start_link(server_ip, port \\ 6666) do
+        # Connect to server
+        {:ok, socket} = :gen_tcp.connect(server_ip, port, [:binary, {:active, false},{:packet, 0}])
+        # Receive k value from server
+        {:ok, data} = :gen_tcp.recv(socket, 0)
+        IO.puts "k value: #{data}"
+        parent = self()
+        k = elem(Integer.parse(data), 0)
+        start_mining(socket, k, parent)
     end
-    defp loop(socket) do
-        ok = socket |> :gen_tcp.send(get_message())
-        loop(socket)
+    defp send_coin(server, data) do
+        ok = server |> :gen_tcp.send(data)
     end
-    defp get_message() do
-        #%{"Hello" => "World"}
-        "Hello World!"
+    defp start_mining(server, k, parent) do
+        # Spawn the mining process separate
+        spawn fn -> BitCoin.mine(k, parent) end
+        receive do
+            {:good_coin, coin_details} -> send_coin(server, coin_details)
+        end
+        start_mining(server, k, parent)
     end
 end
-#Client.start_link()
