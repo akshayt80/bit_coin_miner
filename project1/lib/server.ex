@@ -1,8 +1,8 @@
 defmodule Server do
 
-    def start_link(k) do
+    def start_link(k, cores, port) do
         IO.puts "Starting server process"
-        {:ok, listen_socket} = :gen_tcp.listen(6666,[:binary,
+        {:ok, listen_socket} = :gen_tcp.listen(port,[:binary,
                                                     {:ip, {0,0,0,0}},
                                                     {:packet, 0},
                                                     {:active, false},
@@ -11,7 +11,7 @@ defmodule Server do
         # accepting new connections and receiving tcp messages in separate process
         spawn fn -> loop_acceptor(listen_socket, parent, k) end
         # performing mining in main process
-        start_mining(%{}, k, parent)
+        start_mining(%{}, k, parent, cores)
     end
 
     defp loop_acceptor(socket, parent, k) do
@@ -31,16 +31,19 @@ defmodule Server do
         serve(worker, parent)
     end
 
-    defp start_mining(map, k, parent) do
-        # Spawn the mining process separate
-        spawn fn -> BitCoin.mine(k, parent) end
-        # updates the map with the new map with accepted values
+    defp start_mining(map, k, parent, cores) do
+        # Spawn the mining processes separately
+        for n <- 1..cores, do: spawn fn -> BitCoin.mine(k, parent) end
+        listener(map)
+    end
+
+    defp listener(map) do
         map = receive do
             {:good_coin, coin_details} -> coin = String.split(coin_details)
                 # Enums are not good to extract elements on a long list
                 BitCoin.check_coin_validity(Enum.at(coin, 0), Enum.at(coin, 1), map)
         end
-        start_mining(map, k, parent)
+        listener(map)
     end
 
 end
