@@ -1,7 +1,11 @@
 # Project1
+READ ME file for Distributed Operating Systems - Project 1
+Date: September 18th September,2017
 
-**TODO: Add description**
+Group members:
 
+1. Anmol Khanna, UFID:65140549, anmolkhanna93@ufl.edu
+2. Akshay Singh Jetawat, UFID:22163183 ,
 ## Installation
 
 If [available in Hex](https://hex.pm/docs/publish), the package can be installed
