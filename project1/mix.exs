@@ -7,7 +7,7 @@ defmodule Project1.Mixfile do
       version: "0.1.0",
       elixir: "~> 1.5",
       start_permanent: Mix.env == :prod,
-      escript: escript_config,
+      escript: escript_config(),
       deps: deps()
     ]
   end
