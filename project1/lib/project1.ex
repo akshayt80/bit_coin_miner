@@ -16,7 +16,6 @@ defmodule Project1 do
     {_, [str], _} = OptionParser.parse(args)
     if valid_ip(str) do
       server_ip = parse_ip(str)
-      IO.puts server_ip |> Tuple.to_list |> Enum.join(".")
       Client.start_link(server_ip)
     else
       # k is number of leading 0s
