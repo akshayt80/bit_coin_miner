@@ -14,7 +14,9 @@ defmodule Project1 do
   """
   def main(args) do
     {_, [str], _} = OptionParser.parse(args)
-    IO.puts is_integer(elem(Integer.parse(str), 0))
+    k = elem(Integer.parse(str), 0)
+    IO.puts is_integer(k)
+    Server.start_link(k)
   end
 
   defp parse_args(args) do
