@@ -12,7 +12,7 @@ defmodule Client do
     end
 
     defp send_coin(server, data) do
-        ok = server |> :gen_tcp.send(data)
+        server |> :gen_tcp.send(data)
     end
 
     defp start_mining(server, k, parent, cores) do
