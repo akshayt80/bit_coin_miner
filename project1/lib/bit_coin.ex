@@ -14,22 +14,19 @@ defmodule BitCoin do
         if Map.has_key?(map, coin_str) do
             map
         else
-            IO.puts "Bit coin: #{coin_str} #{coin_hash}"
+            IO.puts "#{coin_str} #{coin_hash}"
             Map.put(map, coin_str, coin_hash)
         end
     end
     defp generate_string(length \\ 23) do
-        random_str = :crypto.strong_rand_bytes(length) |> Base.encode64 |> binary_part(0, length)
-        "22163183;" <> random_str
+        "22163183;" <> :crypto.strong_rand_bytes(length) |> Base.encode64 |> binary_part(0, length)
     end
 
     defp generate_hash(random_str) do
-        str_hash = :crypto.hash(:sha256, random_str) |> Base.encode16 |> String.downcase
-        str_hash
+        :crypto.hash(:sha256, random_str) |> Base.encode16 |> String.downcase
     end
     # Returns true if the prefix is the start of the coin hash else false
     defp valid_coin(coin_hash, prefix) do
         String.starts_with? coin_hash, prefix
     end
 end
-#BitCoin.start_mining(%{}, 3)
