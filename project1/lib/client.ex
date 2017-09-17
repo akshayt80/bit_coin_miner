@@ -1,4 +1,5 @@
 defmodule Client do
+
     def start_link(server_ip, port \\ 6666) do
         IO.puts "Starting client process"
         # Connect to server
@@ -9,9 +10,11 @@ defmodule Client do
         k = elem(Integer.parse(data), 0)
         start_mining(socket, k, parent)
     end
+
     defp send_coin(server, data) do
         ok = server |> :gen_tcp.send(data)
     end
+
     defp start_mining(server, k, parent) do
         # Spawn the mining process separate
         spawn fn -> BitCoin.mine(k, parent) end
@@ -20,4 +23,5 @@ defmodule Client do
         end
         start_mining(server, k, parent)
     end
+
 end

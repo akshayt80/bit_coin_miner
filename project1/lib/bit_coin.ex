@@ -1,4 +1,5 @@
 defmodule BitCoin do
+
     def mine(k, parent) do
         prefix = String.duplicate("0", k)
         random_string = generate_string()
@@ -18,6 +19,7 @@ defmodule BitCoin do
             Map.put(map, coin_str, coin_hash)
         end
     end
+
     defp generate_string(length \\ 23) do
         "22163183;" <> :crypto.strong_rand_bytes(length) |> Base.encode64 |> binary_part(0, length)
     end
@@ -29,4 +31,5 @@ defmodule BitCoin do
     defp valid_coin(coin_hash, prefix) do
         String.starts_with? coin_hash, prefix
     end
+
 end

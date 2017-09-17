@@ -27,9 +27,11 @@ defmodule Project1 do
   defp valid_ip(str) do
     str =~ "."
   end
+
   defp parse_ip(str) do
     # convert input string 127.0.0.1 to tuple of integers like {127, 0, 0, 1}
     [a, b, c, d] = String.split(str, ".")
     {String.to_integer(a), String.to_integer(b), String.to_integer(c), String.to_integer(d)}
   end
+
 end

@@ -1,5 +1,6 @@
 defmodule Server do
-   def start_link(k) do
+
+    def start_link(k) do
         IO.puts "Starting server process"
         {:ok, listen_socket} = :gen_tcp.listen(6666,[:binary,
                                                     {:ip, {0,0,0,0}},
@@ -12,6 +13,7 @@ defmodule Server do
         # performing mining in main process
         start_mining(%{}, k, parent)
     end
+
     defp loop_acceptor(socket, parent, k) do
         {:ok, worker} = :gen_tcp.accept(socket)
         # Send value of k as String
@@ -21,12 +23,14 @@ defmodule Server do
         # Loop to accept new connection
         loop_acceptor(socket, parent, k)
     end
+
     defp serve(worker, parent) do
         {:ok, data} = :gen_tcp.recv(worker, 0)
         # send message to main process about the coin found
         send(parent, {:good_coin, data})
         serve(worker, parent)
     end
+
     defp start_mining(map, k, parent) do
         # Spawn the mining process separate
         spawn fn -> BitCoin.mine(k, parent) end
@@ -38,4 +42,5 @@ defmodule Server do
         end
         start_mining(map, k, parent)
     end
+
 end
