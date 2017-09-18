@@ -1,17 +1,4 @@
 defmodule Project1 do
-  @moduledoc """
-  Documentation for Project1.
-  """
-
-  @doc """
-  Hello world.
-
-  ## Examples
-
-      iex> Project1.hello
-      :world
-
-  """
   def main(args) do
     {_, [str], _} = OptionParser.parse(args)
     # Using number of cores to spawn mining processes and multiplying 3 to make
