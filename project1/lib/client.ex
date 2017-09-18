@@ -6,6 +6,7 @@ defmodule Client do
         {:ok, socket} = :gen_tcp.connect(server_ip, port, [:binary, {:active, false},{:packet, 0}])
         # Receive k value from server
         {:ok, data} = :gen_tcp.recv(socket, 0)
+        IO.puts "Received from server k=#{data}"
         parent = self()
         k = elem(Integer.parse(data), 0)
         start_mining(socket, k, parent, cores)
