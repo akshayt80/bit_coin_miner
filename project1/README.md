@@ -47,10 +47,10 @@ sys     0m0.324s
 
 Ratio of CPU time to Real time in this case is = (user + sys) / real = 
 
-- From our distributed bitcoin miner system, we were able to mine a bitcoin with leading zero's counting to 8. i.e. for k = 8 we were able to mine a bitcoin.
-22163183;MCxXPvQ92DzY7wqmkeoYbt+    000000006b36ab337a0bb44ce96437a032bad2865efe0ccf41a2970dcb2bf665
+- From our distributed bitcoin miner system, we were able to mine a bitcoin with leading zero's counting to 9. i.e. for k = 9 we were able to mine a bitcoin.
+22163183;xlElomiQ+wWeL80ERxV2bc7    000000000606449b92aa5ab7d44d22c5a099fcfc50bc122f00947475d887ffe4
 
-- We were able to run our code on 10 machines(1 Server and 9 workers) with each having eight cores and getting the CPU utilization of atleast 725%.
+- We were able to run our code on 11 machines(1 Server and 10 workers) with each having eight cores and getting the CPU utilization of atleast 750%.
 
 # Installation
 
