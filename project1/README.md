@@ -40,12 +40,16 @@ Starting server process
 22163183;UBaoUpskdRh7Ejci6yNs2gx    0000002a7fd982e707b5c4d4d269324513cc97a0dcc331e23970797df5459556
 ^C
 
-real    0m42.799s
-user    1m17.324s
-sys     0m0.324s
+real    0m42.799s = 42.799 sec
+user    1m17.324s = 77.324 sec
+sys     0m0.324s = 0.32 sec
 
-
-Ratio of CPU time to Real time in this case is = (user + sys) / real = 
+(Total CPU time)/(Number of CPUs) would be same as elapsed real time if the work load is evenly distributed on each CPU and no wait is involved for I/O or other resources.
+		Here, Total CPU time = 1m17.324s = 77.324 sec.
+		Real time = 10m42.799s = 42.799 sec
+		
+		The ratio of CPU time to REAL TIME = 1.80
+		
 
 - From our distributed bitcoin miner system, we were able to mine a bitcoin with leading zero's counting to 9. i.e. for k = 9 we were able to mine a bitcoin.
 22163183;xlElomiQ+wWeL80ERxV2bc7    000000000606449b92aa5ab7d44d22c5a099fcfc50bc122f00947475d887ffe4
