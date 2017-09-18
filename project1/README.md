@@ -13,7 +13,7 @@ Group members:
 
 - The bitcoins are mined using the SHA-256 algorithm and the input string with the corresponding SHA-256 hash is printed.
 
-- The project is implemented as a distributed system where the address of the address of the server is passed as an argument and then the server performs the mine operation.
+- The project is implemented as a distributed system where the address of the address of the server is passed as an argument and then the server starts to distribute the mining operation among the workers.
 
 - The performace of the system is measured using the ratio of the CPU time to Real time as a metric and we have discussed the performance for k=4 and k=5.
 
