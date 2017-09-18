@@ -11,6 +11,9 @@ Group members:
 
 - The project uses elixir and the actor model to generate bitcoins with valid number of leading 0's.
 
+- To maintain uniqueness of the coins from rest of the class we have prefixed the random string
+with ufid.
+
 - The bitcoins are mined using the SHA-256 algorithm and the input string with the corresponding
 SHA-256 hash is printed.
 
