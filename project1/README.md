@@ -68,22 +68,4 @@ counting to 9. i.e. for k = 9 we were able to mine a bitcoin.
 22163183;xlElomiQ+wWeL80ERxV2bc7    000000000606449b92aa5ab7d44d22c5a099fcfc50bc122f00947475d887ffe4
 
 - We were able to run our code on 11 machines(1 Server and 10 workers) with each having eight cores
-and getting the CPU utilization of atleast 750%.
-
-# Installation
-
-If [available in Hex](https://hex.pm/docs/publish), the package can be installed
-by adding `project1` to your list of dependencies in `mix.exs`:
-
-```elixir
-def deps do
-  [
-    {:project1, "~> 0.1.0"}
-  ]
-end
-```
-
-Documentation can be generated with [ExDoc](https://github.com/elixir-lang/ex_doc)
-and published on [HexDocs](https://hexdocs.pm). Once published, the docs can
-be found at [https://hexdocs.pm/project1](https://hexdocs.pm/project1).
-
+and getting the CPU utilization of atleast 720%.
